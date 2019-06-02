@@ -1,0 +1,13 @@
+.card{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    padding: 80px 20px 60px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    color: aliceblue;
+    background: lightcoral;
+    transition: all linear .2s;
+}

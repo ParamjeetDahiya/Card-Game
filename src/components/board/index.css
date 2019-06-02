@@ -1,0 +1,32 @@
+.board{
+    width: 200px;
+    height: 400px;
+    margin: 0 auto;
+    margin-top:25vh; 
+}
+.start{
+    padding: 20px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell;
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    color: aliceblue;
+    background: lightcoral;
+    transition: all linear .2s;
+}
+.start:hover{
+    background: lightsalmon;
+}
+.win{
+    position: absolute;
+    z-index: -10;
+    top:25vh;
+    padding: 20px 40px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell;
+    font-size: 25px;
+    font-weight: 600;
+    text-align: center;
+    color: aliceblue;
+    background: forestgreen;
+    transition: all linear .2s;
+}
