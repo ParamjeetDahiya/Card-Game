@@ -7,7 +7,12 @@
     font-size: 30px;
     font-weight: 600;
     text-align: center;
-    color: aliceblue;
-    background: lightcoral;
+    color: lightcoral;
+    background: #ffffff;
+    border:10px solid lightcoral;
     transition: all linear .2s;
+}
+.card:hover{
+    transform: rotate(20deg);
+
 }

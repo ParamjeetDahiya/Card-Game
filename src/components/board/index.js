@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { removeCard,shuffleCards } from '../../actions';
+import { bindActionCreators } from 'redux';
 import './index.css'
 import Card from '../card';
 class Board extends Component {
 
     state = {
         start: true,
-        currentCard: '',
         defuse:false
     }
     showStart=()=>{
@@ -15,8 +17,9 @@ class Board extends Component {
             </div>
         )
     }
+
     onStart = () => {
-        this.props.shuffle();
+        this.props.shuffleCards();
         this.setState({start:false})
     }
     showCards = () => {
@@ -29,16 +32,19 @@ class Board extends Component {
     }
     logic = (currentCard) => {
         
-        console.log(currentCard);
+        const { cards } = this.props;
+        
+
         if (currentCard === 'Cat') {
-            this.props.remove()
+            this.props.removeCard(cards)
+            this.setState({defuse:false})
         }
         if (currentCard === 'Defuse') {
             this.setState({ defuse: true })
-            this.props.remove()
+            this.props.removeCard(cards)
         }
         if (currentCard === 'Explode' && this.state.defuse) {
-            this.props.remove();
+            this.props.removeCard(cards);
             this.setState({defuse:false})
         }
         if (currentCard === 'Explode' && !this.state.defuse) {
@@ -46,12 +52,14 @@ class Board extends Component {
             this.setState({start:true})
         }
         if (currentCard === 'Shuffle') {
-            this.props.shuffle()
+            this.props.shuffleCards()
         }
 
     }
 
     render() {
+        
+        
         return (
             <div className="board">
                 {this.state.start ? this.showStart() : this.showCards()}
@@ -61,4 +69,14 @@ class Board extends Component {
     }
 }
 
-export default Board;
+const mapStateToProps = (Card) => {
+    
+    return {
+        cards: Card.Card.state.cards
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators({removeCard,shuffleCards},dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board);

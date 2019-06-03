@@ -1,11 +1,20 @@
-export default function(state={},action){
+const initialState = {
+    cards:[]
+}
+
+
+export default function (state = initialState, action) {
+    
+
+    
+    
     switch (action.type) {
 
-        case 'GET_CARD ':
-            return{...state} 
-        case 'CARDS':
-            return{}
+        case 'SHUFFLE_CARDS':
+            return{...state,state:{cards:action.payload}} 
+        case 'REMOVE_CARD':
+            return{...state,cards:action.payload}
         default:
-            return state;
+            return {state};
     }
 }
